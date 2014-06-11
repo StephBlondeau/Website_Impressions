@@ -1,0 +1,227 @@
+@charset "utf-8";
+
+.marge {
+margin-right: 30px;
+}
+
+[type="search"] {
+   -webkit-appearance: textfield;
+   -webkit-box-sizing: content-box;
+}
+
+figure
+    {
+        //margin: 0 20px 0 0;
+        -moz-box-shadow: 0 3px 10px #ccc;
+        -webkit-transition: all 0.7s ease;
+        -moz-transition: all 1s ease;
+        -ms-transitoin: all 1s ease;
+        position: relative;
+}
+
+figure:hover
+{
+    -webkit-transform: rotate(-3deg); 
+    -moz-transform: rotate(3deg);
+    -ms-transform:rotate(3deg);
+}
+
+figure:focus
+{
+    outline: none;
+    -webkit-transform: rotate(0deg) scale(2.5); 
+    -moz-transform: rotate(0deg) scale(2.5);
+    -ms-transform: rotate(0deg) scale(2.5);
+    -index: 9999;
+    filter: progid:DXImageTransform.Microsoft.Matrix(sizingMethod='auto expand',
+   M11=2, M12=-0, M21=0, M22=2);
+}
+
+#main {
+	background-color: #A5C7E0;
+}
+body {
+	background-color: #A5C7E0;
+}
+
+a{
+	color: #5182bf;
+	text-decoration:none;
+}
+
+a:hover{
+	color: #5182bf;
+	text-decoration:underline;
+}
+#logo {
+	background-image: url(images/index_03.jpg);
+	height: 53px;
+	width: 141px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	font-size: 14px;
+	line-height: 2;
+	text-align: center;
+	color: #4586B9;
+}
+
+#logo a {
+	font-family: New Century Schoolbook, serif; 
+	font-weight: normal; 
+	font-size: 20px; 
+	line-height: 2;
+	text-align: center; 
+	text-decoration:none; 
+}
+.top_menu {
+	font-family: "Lucida Handwriting";
+	font-size: 8px;
+	font-weight: normal;
+	color: #353535;
+}
+.top_menu ul {
+	margin: 0;
+	list-style: none;
+	padding-left: 0px;
+}
+
+.top_menu li {
+	display: inline;
+}
+
+.top_menu a {
+	font-family: New Century Schoolbook, serif;
+	font-size: 15px;
+	font-weight:normal;
+	color: #353535;
+	text-decoration: none;
+	line-height:35px;
+	float: left;
+	height: 36px;
+	width: 99px;
+	padding-bottom:0px;
+	text-align: center;
+	padding-left: 0px;
+	background: url(images/index_07.jpg);
+	background-repeat: no-repeat;
+}
+.top_menu a:hover {	
+	background: url(images/hover.jpg);
+	background-repeat: no-repeat; 
+	height: 36px;
+	width: 99px;
+	text-decoration: none;
+}
+
+
+
+.top_menu a:active {
+/* nous revenons au fond d'origine */
+background: url(images/hover.jpg);
+	background-repeat: no-repeat; 
+	height: 36px;
+	width: 99px;
+	text-decoration: none;
+/* les ombres internes passe au noir et une bordure s'ajoute en bas du bouton */
+box-shadow: 1px 1px 10px black inset, 0 1px 0 rgba( 255, 255, 255, 0.4) ;
+}
+
+.image{
+        top:140px;
+        right:23px;
+        z-index:1;
+        position:absolute;
+}
+
+.h1{
+	font-family:New Century Schoolbook, serif;
+	font-size:18px;
+	color: #353535;
+	line-height: 2;
+	text-align: left;
+	padding-left: 10px;
+}
+
+.h2{
+	font-family:New Century Schoolbook, serif;
+	font-size:18px;
+	color: #353535;
+	line-height: 2;
+	text-align: center;
+}
+
+
+.content{
+	font-family: New Century Schoolbook, serif;
+	font-size:14px;
+	color: #353535;
+	text-align: center;
+	padding-left: 10px;
+        margin-right: 10px;
+        z-index:0;
+        
+}
+.content_statR{
+        font-family: New Century Schoolbook, serif;
+	font-size:14px;
+	color: #353535;
+	padding-left: 10px;
+        margin-right: 10px;
+        text-align: right;
+}
+
+.content_statL{
+        font-family: New Century Schoolbook, serif;
+	font-size:14px;
+	color: #353535;
+	padding-left: 10px;
+        margin-right: 10px;
+        text-align: left;
+}
+#content {
+	background-image: url(images/index_19.jpg);
+	height: 376px;
+	width: 410px;
+        position:relative;
+        z-index:0;
+}
+
+#left_content {
+	background-image: url(images/index_18.jpg);
+	height: 262px;
+	width: 181px;
+}
+
+#left_content_image {
+ 	background-image: url(images/index_34.jpg);
+	height: 262px;
+	width: 181px;
+        position:relative;
+        z-index:0;
+}   
+#relative{
+        position:relative;
+    
+}
+#footer {
+	font-family: New Century Schoolbook, serif;
+	font-size: 12px;
+	color: #D9D9D9;
+	text-decoration: none;
+	background-image: url(images/index_31.jpg);
+	height: 23px;
+	width: 591px;
+	text-align: center;
+}
+.style4 {
+        color: #457598
+        }
+.style5 {
+	font-size: 10px;
+	color: #A5C7E5;
+}
+.style5 a {
+	font-size: 10px;
+	text-decoration: none;
+	color: #A5C7E5;
+}
