@@ -112,7 +112,7 @@ $code="";
             <ul>
                 <li>
                     <?php
-                    echo "<a href='contact.php".$code." '>Contact</a>"; 
+                    echo "<a href='rechercher.php".$code." '>Rechercher</a>"; 
                     ?>
                 </li>
             </ul>

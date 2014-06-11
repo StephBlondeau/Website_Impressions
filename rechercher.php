@@ -42,6 +42,23 @@ $code="";
                   <div class="content_statL"> 
                       <input type='search' id='titreD' name='titre' placeholder='Veuillez entrer un titre'/>
                       <input type="submit" id="valider" value="Rechercher"/>
+                      <!--Creation d'un tableau-->
+                      <table class="t1" summary="documents qui répondes à la recherche de l'user"> 
+                          <caption>Liste des Documents trouv&eacute;s</caption> 
+                          <thead> 
+                              <tr>
+                                  <th>Nb Pages</th>
+                                  <th>Titre document</th>
+                                  <th>Dates Impressions</th>
+                              </tr> 
+                          </thead> 
+                          <tfoot> 
+                              <tr>
+                                  <th colspan="4"></th>
+                              </tr> 
+                          </tfoot> 
+                          <tbody>
+
 <?php
                     if (isset ($_POST['titre']) and $code!="") //On vérifie si le formulaire a été valider (envoie du titre et du code
                     {
@@ -55,10 +72,27 @@ $code="";
                         $dates=array();
                         $noms=array();
                         $pages=array();
-                        
-                    }
 
+                        //Rangement des résultats dans les tableaux
+                        $i=0;
+                        while ($row = mysql_fetch_array($resultat))
+                            {
+                                $pages[$i] = $row[2];
+                                $noms[$i] = $row[1];
+                                $dates[$i] = $row[0];
+                                
+                                echo"<tr>
+                                        <th>".$pages[$i]."</th>
+                                        <td>".$noms[$i]."</td>
+                                        <td>".$dates[$i]."</td>
+                                     </tr>";
+                                $i++;
+                            }
+  
+                    }
 ?>
+                          </tbody> 
+                      </table>
                   </div>
           </div>
       </td>

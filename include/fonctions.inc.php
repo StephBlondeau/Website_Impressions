@@ -457,4 +457,19 @@ function nbImpressions($Code,$periode)
             }
     
 }
+
+function rechercheDoc($recherche)
+{
+    //On adapte la variable recherche pour la requete sql
+    //On remplace les espace pas de %
+    $rechercheSql=str_replace(' ','%',$recherche);
+    //Requete sql 
+    $requete="select date, nom, pages from t_log where nom like '%".$rechercheSql."%';";
+
+    //On excute la requete
+    $resultatSql=  mysql_query($requete);
+    
+    //On retourne le résultat
+    return $resultatSql;
+}
 ?>
