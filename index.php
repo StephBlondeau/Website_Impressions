@@ -32,7 +32,7 @@ include("./include/fonctions.inc.php");
             <div class="h1">Bienvenue</div>
             <br />
             <div class="content"> Pr&eacutesentation :<br /><br />
-            A FAIRE...<br />
+            A faire...<br />
             </div>
           </div>
       </td>
