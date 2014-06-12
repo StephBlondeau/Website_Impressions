@@ -42,9 +42,29 @@ $code="";
                   <div class="content_statL"> 
                       <input type='search' id='titreD' name='titre' placeholder='Veuillez entrer un titre'/>
                       <input type="submit" id="valider" value="Rechercher"/>
-                      <!--Creation d'un tableau-->
-                      <table class="t1" summary="documents qui répondes à la recherche de l'user"> 
-                          <caption>Liste des Documents trouv&eacute;s</caption> 
+                      
+                      
+                      <!--Creation d'un tableau et on le range dans une div -->
+
+<?php
+                    if (isset ($_POST['titre']) and $code!="" and $_POST['titre']!="" ) //On vérifie si le formulaire a été valider (envoie du titre et du code
+                    {
+                        //On récupére la valeur du formulaire
+                        $recherche=$_POST['titre'];
+                        
+                        //on utilise une fonction pour rechercher les documentes qui compose cette recherche avec leur dates et le nombre de pages
+                        $resultat=rechercheDoc($recherche);
+                        
+                        //Création de 3 tableaux qui vont contenir les nom, date et pages des documents trouvés
+                        $dates=array();
+                        $noms=array();
+                        $pages=array();
+                        
+                        //On créer le tableaux
+?>
+                        <div id="divConteneur">
+                        <table class="t1" summary="documents qui répondes à la recherche de l'user"> 
+                          <!--<caption>Liste des Documents trouv&eacute;s</caption> -->
                           <thead> 
                               <tr>
                                   <th>Nb Pages</th>
@@ -58,21 +78,7 @@ $code="";
                               </tr> 
                           </tfoot> 
                           <tbody>
-
 <?php
-                    if (isset ($_POST['titre']) and $code!="") //On vérifie si le formulaire a été valider (envoie du titre et du code
-                    {
-                        //On récupére la valeur du formulaire
-                        $recherche=$_POST['titre'];
-                        
-                        //on utilise une fonction pour rechercher les documentes qui compose cette recherche avec leur dates et le nombre de pages
-                        $resultat=rechercheDoc($recherche);
-                        
-                        //Création de 3 tableaux qui vont contenir les nom, date et pages des documents trouvés
-                        $dates=array();
-                        $noms=array();
-                        $pages=array();
-
                         //Rangement des résultats dans les tableaux
                         $i=0;
                         while ($row = mysql_fetch_array($resultat))
@@ -86,13 +92,26 @@ $code="";
                                         <td>".$noms[$i]."</td>
                                         <td>".$dates[$i]."</td>
                                      </tr>";
+
                                 $i++;
                             }
-  
+                            
+                        if ($i==0)
+                        {
+                            echo "
+                                  <tr>
+                                      <th colspan='4'>Aucun Document trouv&eacute;...</th>
+                                   </tr> 
+                                 ";
+                        }
+                            
+                        echo "</tbody> 
+                            </table>
+                           </div>";
+   
                     }
 ?>
-                          </tbody> 
-                      </table>
+                         
                   </div>
           </div>
       </td>

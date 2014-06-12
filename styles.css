@@ -241,7 +241,7 @@ box-shadow: 1px 1px 10px black inset, 0 1px 0 rgba( 255, 255, 255, 0.4) ;
  .t1 thead th { 
      background: #4f81bd; 
      text-transform: lowercase; 
-     text-align: left; 
+     text-align: center; 
      font-size: 15px; color: #fff; 
  } 
  
@@ -263,12 +263,21 @@ box-shadow: 1px 1px 10px black inset, 0 1px 0 rgba( 255, 255, 255, 0.4) ;
  
  .t1 tfoot th { 
      background: #4f81bd; 
-     text-align: left; 
+     text-align: center; 
      font-weight: normal; 
      font-size: 10px; 
      color: #fff; 
  } 
  
  .t1 tr *:nth-child(3), .t1 tr *:nth-child(4) { 
-     text-align: right; 
+     text-align: center; 
+ }
+ 
+ #divConteneur{
+    min-height:260px;
+    height:260px;/*pour IE qui comprend rien, et qui ne reconnait pas min-height, mais qui comprend mal height*/
+    min-width:100%;
+    width:100%;/*pour IE qui comprend rien*/
+    overflow:auto;/*pour activer les scrollbarres*/
+    text-align: center;
  }
