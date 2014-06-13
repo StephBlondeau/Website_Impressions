@@ -4,6 +4,11 @@
 margin-right: 30px;
 }
 
+[type="search"] {
+   -webkit-appearance: textfield;
+   -webkit-box-sizing: content-box;
+}
+
 figure
     {
         //margin: 0 20px 0 0;
