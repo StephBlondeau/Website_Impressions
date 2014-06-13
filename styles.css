@@ -232,6 +232,7 @@ box-shadow: 1px 1px 10px black inset, 0 1px 0 rgba( 255, 255, 255, 0.4) ;
      margin: 1em auto; 
      border-collapse: collapse; 
      font-family: Arial, Helvetica, sans-serif; 
+     //position: relative;
  } 
  
  .t1 th, .t1 td { 
@@ -273,11 +274,28 @@ box-shadow: 1px 1px 10px black inset, 0 1px 0 rgba( 255, 255, 255, 0.4) ;
      text-align: center; 
  }
  
- #divConteneur{
-    min-height:260px;
-    height:260px;/*pour IE qui comprend rien, et qui ne reconnait pas min-height, mais qui comprend mal height*/
+ .divConteneur{
+    min-height:50%;
+    height:50%;/*pour IE qui comprend rien, et qui ne reconnait pas min-height, mais qui comprend mal height*/
     min-width:100%;
     width:100%;/*pour IE qui comprend rien*/
     overflow:auto;/*pour activer les scrollbarres*/
     text-align: center;
+    top:40%;
+    right:18%;
+    z-index:1;
+    position:absolute;
+ }
+ 
+ #resultat{
+     text-align: right;
+ }
+ 
+ #affiner{
+     text-align:left;
+     position:absolute;
+     width:70%;
+     z-index: 1;
+     top:32%;
+     right:64%;
  }

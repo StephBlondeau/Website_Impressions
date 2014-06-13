@@ -12,6 +12,7 @@ $code="";
     {
         //*********on regarde si le code existe dans la base
         $code="?code=".$_GET['code']; //variable à inséré dans l'url
+        
     }
 
 ?>
@@ -55,9 +56,7 @@ $code="";
           <div class="top_menu">
             <ul>
                 <li>
-                    <?php
-                    echo "<a href='index.php".$code." '>Presentation</a>"; 
-                    ?>
+                    <a href='index.php<?php echo $code;?>'>Presentation</a>
                 </li>
             </ul>
            </div>
@@ -69,9 +68,7 @@ $code="";
           <div class="top_menu">
             <ul>
                 <li>
-                    <?php
-                    echo "<a href='moyenne.php".$code." '>Global</a>"; 
-                    ?>
+                    <a href='moyenne.php<?php echo $code;?>'>Global</a>
                 </li>
             </ul>
           </div>
@@ -83,9 +80,7 @@ $code="";
 	  <div class="top_menu">
             <ul>
                 <li>
-                    <?php
-                    echo "<a href='perso.php".$code." '>Personnelle</a>"; 
-                    ?>
+                    <a href='perso.php<?php echo $code;?>'>Personnelle</a>
                 </li>
             </ul>
           </div>
@@ -97,9 +92,7 @@ $code="";
 	 <div class="top_menu">
             <ul>
                 <li>
-                    <?php
-                    echo "<a href='stat.php".$code." '>Statistiques</a>"; 
-                    ?>
+                    <a href='stat.php<?php echo $code;?>'>Statistiques</a>
                 </li>
             </ul>
          </div>
@@ -111,9 +104,7 @@ $code="";
 	 <div class="top_menu">
             <ul>
                 <li>
-                    <?php
-                    echo "<a href='rechercher.php".$code." '>Rechercher</a>"; 
-                    ?>
+                    <a href='rechercher.php<?php echo $code;?>'>Rechercher</a>
                 </li>
             </ul>
          </div>

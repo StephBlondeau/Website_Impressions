@@ -20,16 +20,9 @@ include("../pChart/class/pCache.class.php");
 include('./include/dbconnect.inc.php');
 //Fichier de fonction
 include('./include/fonctions.inc.php');
+//On récupére et on vérifie
+include('./include/verification.inc.php');
 
-//variable de base
-$code="";
-
-    if(isset ($_GET['code'])) //s'il y a un code
-    {
-        //*********on regarde si le code existe dans la base
-        $code="?code=".$_GET['code']; //variable à inséré dans l'url
-    }
-    
 ?>
 <!--Contenue du corps du tableau-->
     <tr>
@@ -73,7 +66,7 @@ $code="";
 //*************Enregistrement du graphique*************
 
 //Récuperation du champs radio et celui de la liste déroulante (Periode + comparer)
-    if(isset($_POST['Periode']) and $code!="" and isset($_POST['comparer'])) //Si les variables periode, code et comparer existe on peut faire le graphique
+    if(isset($_POST['Periode']) and $Code!="" and isset($_POST['comparer'])) //Si les variables periode, code et comparer existe on peut faire le graphique
          {
             //Variables
             $periode=$_POST['Periode']; //On récupére la période envoyer

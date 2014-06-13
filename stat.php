@@ -1,25 +1,18 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <?php
+//Ajout debut de page html
 include ("./include/debut.inc.php");
 //fichier de Connexion à la BDD Mysql
 include('./include/dbconnect.inc.php');
 //On inclut la liste des fonctions
 include('./include/fonctions.inc.php');
+//On récupére et on vérifie
+include('./include/verification.inc.php');
 
-//variable de base
-$code="";
-
-    if(isset ($_GET['code'])) //s'il y a un code
-    {
-        //*********on regarde si le code existe dans la base
-        $code="?code=".$_GET['code']; //variable à inséré dans l'url
-    }
-
-    if(isset($_POST['Periode']) and $code!="") //Si les variables periode et code existe on peut faire le graphique
+    if(isset($_POST['Periode']) and $Code!="") //Si la variables periode exite et code n'ai pas vide on peut faire le graphique
          {
             $periode=$_POST['Periode']; //On la récupére
-            $Code=$_GET['code'];
             
             //recherche de la somme d'impression selon la période choisi ainsi que la date du jour
             $total=nbImpressions($Code,$periode);
@@ -215,7 +208,7 @@ $code="";
                                 Minimum : <?php echo $min?> pages imprim&eacute;es, au mois de <?php echo $dateMin?> .<br />
                                 <span class="marge">Co&ucirc;tent: <?php echo $coutMini?> euros.</span><br />
                                 <span class="marge">Abat: <?php echo $coutArbMin?> arbres.</span><br /><br /><br />
-                                Ce mois-ci, vous en étes à <?php echo $total?> pages imprim&eacute;es.<br />
+                                <!--Ce mois-ci, vous en étes à <?php echo $total?> pages imprim&eacute;es.<br />-->
                             </p>
             
                             <?php
@@ -230,7 +223,7 @@ $code="";
                                 Minimum : <?php echo $min?> pages imprim&eacute;es, dans l'ann&eacute;e <?php echo $dateMin?> .<br />
                                 <span class="marge">Co&ucirc;tent: <?php echo $coutMini?> euros.</span><br />
                                 <span class="marge">Abat: <?php echo $coutArbMin?> arbres.</span><br /><br /><br />
-                                Cette année, vous en étes à <?php echo $total?> pages imprim&eacute;es.<br />
+                                <!--Cette année, vous en étes à <?php echo $total?> pages imprim&eacute;es.<br />-->
                             </p>    
                             
                           
@@ -246,7 +239,7 @@ $code="";
                                 Minimum : <?php echo $min?> pages imprim&eacute;es, le <?php echo $dateMin?> .<br />
                                 <span class="marge">Co&ucirc;tent: <?php echo $coutMini?> euros.</span><br />
                                 <span class="marge">Abat: <?php echo $coutArbMin?> arbres.</span><br /><br /><br />
-                                Hier, vous avez imprim&eacute;e <?php echo $total?> page(s).<br />
+                                <!--Hier, vous avez imprim&eacute;e <?php echo $total?> page(s).<br />-->
                             </p> 
                           
                           

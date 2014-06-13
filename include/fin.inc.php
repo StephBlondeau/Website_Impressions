@@ -10,7 +10,7 @@
     <tr>
       <td colspan="19">
           <div id="footer">
-              <strong>Faites attention à votre consommation... <br />
+              <strong> <br />
               </strong>
           </div>
       </td>

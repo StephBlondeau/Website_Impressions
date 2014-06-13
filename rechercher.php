@@ -6,23 +6,12 @@ include ("./include/debut.inc.php");
 include ("./include/dbconnect.inc.php");
 //Ajout de la liste des fonctions
 include ("./include/fonctions.inc.php");
-
-//variable de base
-$code="";
-
-    if(isset ($_GET['code'])) //s'il y a un code
-    {
-        //*********on regarde si le code existe dans la base
-        $code="?code=".$_GET['code']; //variable à inséré dans l'url
-        $Code=$_GET['code'];
-    }
+//On récupére et on vérifie
+include('./include/verification.inc.php');
 ?>
 <!--Contenue du corps du tableau-->
     <tr>
     <!--Debut du formulaire-->
-        <?php
-        echo "<form action='rechercher.php".$code."' method='POST'>";
-        ?>
       <td rowspan="5">
         <img src="images/index_17.jpg" width="33" height="463" alt="" />
       </td>
@@ -40,17 +29,18 @@ $code="";
               <div class="h1">Recherche d'un document</div>
                   <br />
                   <div class="content_statL"> 
-                      <input type='search' id='titreD' name='titre' placeholder='Veuillez entrer un titre'/>
-                      <input type="submit" id="valider" value="Rechercher"/>
-                      
-                      
-                      <!--Creation d'un tableau et on le range dans une div -->
-
-<?php
-                    if (isset ($_POST['titre']) and $code!="" and $_POST['titre']!="" ) //On vérifie si le formulaire a été valider (envoie du titre et du code
+                      <form action='rechercher.php<?php echo $code;?>' method='POST'>
+                        <input type='search' id='titreD' name='titre' placeholder='Veuillez entrer un titre'/>
+                        <input type="submit" id="valider" value="Rechercher"/>
+                      </form>
+<?php                      
+                  
+                    if (isset ($_POST['titre']) and $Code!="" and $_POST['titre']!="" ) //On vérifie si le formulaire a été valider (envoie du titre et du code
                     {
                         //On récupére la valeur du formulaire
                         $recherche=$_POST['titre'];
+                        //On doit écrire minimun 5 caractéres
+                        $caracMin=5;
                         
                         //on utilise une fonction pour rechercher les documentes qui compose cette recherche avec leur dates et le nombre de pages
                         $resultat=rechercheDoc($recherche);
@@ -60,64 +50,76 @@ $code="";
                         $noms=array();
                         $pages=array();
                         
-                        //On créer le tableaux
+                        if(strlen($recherche)<$caracMin)
+                        {
+                            $erreur="Veuillez saisir au minimum 5 caract&egrave;res.";
+                        }
+                        
+                        //On créer le tableaux s'il n'y a pas d'erreur
+                        if(!$erreur)
+                        {
 ?>
-                        <div id="divConteneur">
-                        <table class="t1" summary="documents qui répondes à la recherche de l'user"> 
-                          <!--<caption>Liste des Documents trouv&eacute;s</caption> -->
-                          <thead> 
-                              <tr>
-                                  <th>Nb Pages</th>
-                                  <th>Titre document</th>
-                                  <th>Dates Impressions</th>
-                              </tr> 
-                          </thead> 
-                          <tfoot> 
-                              <tr>
-                                  <th colspan="4"></th>
-                              </tr> 
-                          </tfoot> 
-                          <tbody>
+                            <div class="divConteneur">
+                            <table class="t1" summary="documents qui répondes à la recherche de l'user"> 
+                              <!--<caption>Liste des Documents trouv&eacute;s</caption> -->
+                              <thead> 
+                                  <tr>
+                                      <th>Nb Pages</th>
+                                      <th>Titre document</th>
+                                      <th>Dates Impressions</th>
+                                  </tr> 
+                              </thead> 
+                              <tfoot> 
+                                  <tr>
+                                      <th colspan="4"></th>
+                                  </tr> 
+                              </tfoot> 
+                              <tbody>
 <?php
-                        //Rangement des résultats dans les tableaux
-                        $i=0;
-                        while ($row = mysql_fetch_array($resultat))
-                            {
-                                $pages[$i] = $row[2];
-                                $noms[$i] = $row[1];
-                                $dates[$i] = $row[0];
-                                
-                                echo"<tr>
-                                        <th>".$pages[$i]."</th>
-                                        <td>".$noms[$i]."</td>
-                                        <td>".$dates[$i]."</td>
-                                     </tr>";
+                            //Rangement des résultats dans les tableaux
+                            $i=0;
+                            while ($row = mysql_fetch_array($resultat))
+                                {
+                                    $pages[$i] = $row[2];
+                                    $noms[$i] = $row[1];
+                                    $dates[$i] = $row[0];
 
-                                $i++;
+                                    echo"<tr>
+                                            <th>".$pages[$i]."</th>
+                                            <td>".$noms[$i]."</td>
+                                            <td>".$dates[$i]."</td>
+                                         </tr>";
+
+                                    $i++;
+                                }
+                            
+                            if ($i==0)
+                            {
+                                echo "<tr><th colspan='4'>Aucun Document trouv&eacute;...</th></tr> ";
                             }
                             
-                        if ($i==0)
-                        {
-                            echo "
-                                  <tr>
-                                      <th colspan='4'>Aucun Document trouv&eacute;...</th>
-                                   </tr> 
-                                 ";
-                        }
+                            echo "</tbody> 
+                                </table>
+                               </div>";
+                        
+                            echo"<br /><div id='resultat'> R&eacute;sultat trouv&eacute;(s): ".$i.".</div>";
                             
-                        echo "</tbody> 
-                            </table>
-                           </div>";
-   
+                        }else
+                        {
+ ?>                           
+                            <div id='affiner'> 
+                                 <?php echo $erreur;?>
+                           </div>
+<?php                                  
+                        }
                     }
 ?>
-                         
-                  </div>
+                 </div>
           </div>
       </td>
       <td rowspan="5">
 	<img src="images/index_20.jpg" width="108" height="463" alt="" />
-      </td>
+      </td> 
     </tr>
     <tr>
       <td rowspan="2">

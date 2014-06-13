@@ -12,6 +12,23 @@
             or die(mysql_error());
             mysql_select_db($_SESSION["NOM_BASE"], $resDbImp) or die(mysql_error()); 
             
+//Fonction qui vas permette la vérification de code utilisateur dans la base de donnée Mysql
+function verifCode ($Code)
+{
+    //Creation de la requete
+    $requete="select * from t_user where code='".$Code."';";
+    
+    //Exécution de la requete
+    $resultat = mysql_query($requete);
+    
+    //On extrait le résultat
+    $reste=  mysql_fetch_row($resultat);
+    
+    //On retourne le résultat
+    return $reste;
+    
+}
+            
 //Fonction recherche un code user aléatoirement
 function codeAléa ($Code)
 {
@@ -19,7 +36,7 @@ function codeAléa ($Code)
     $alea=rand(0, 5);
     //echo $alea;
     //
-    //On recherche tout les code user
+    //On recherche tout les code user autre que celui saisie
     $requete="SELECT code FROM t_user WHERE code !='".$Code."' AND code !=''";
     //echo $requete;
     
